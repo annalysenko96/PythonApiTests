@@ -10,7 +10,7 @@ class DepositAccountRequester(Requester):
         url =f"{self.base_url}/account/deposit"
         response = requests.post(
             url=url,
-            json= deposit_account_request.model_dump(),
+            json= deposit_account_request.model_dump(by_alias=True),
             headers=self.headers
         )
         self.response_spec(response)

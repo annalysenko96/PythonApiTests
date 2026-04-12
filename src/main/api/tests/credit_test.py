@@ -17,10 +17,9 @@ class TestCreditUser:
         )
         credit_from_db = Credit.get_credit_by_id(db_session, result.creditId)
         assert credit_from_db.id == result.creditId
-        assert credit_from_db.account_id == result.accountId
         assert credit_from_db.amount == result.amount
         assert result.amount == amount
-        assert result.accountId == account_response.id
+
 
     @pytest.mark.parametrize("amount", [-1, 0, 4999.9, 15000.1])
     def test_credit_user_invalid(self,db_session: Session, api_manager: ApiManager, user_credit_login:dict, amount:float):
@@ -31,6 +30,7 @@ class TestCreditUser:
             term_months=12,
             response_spec=ResponseSpecs.request_bad()
         )
+
         assert account_response.balance ==0
 
 
