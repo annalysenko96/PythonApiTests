@@ -18,7 +18,7 @@ class TestTransfer:
     transfer_data: TransferRequestData):
         result = api_manager.account_steps(user_login).transfer_account(
             transfer_data.request_data,
-            ResponseSpecs.request_ok()
+
         )
 
         last_from_db = Transaction.get_transaction_last_by_account_id(db_session, transfer_data.request_data.fromAccountId)
@@ -36,9 +36,8 @@ class TestTransfer:
     api_manager: ApiManager,
     user_login:dict,
     transfer_data: TransferRequestData):
-        result = api_manager.account_steps(user_login).transfer_account(
+        result = api_manager.account_steps(user_login).transfer_account_invalid(
             transfer_data.request_data,
-            ResponseSpecs.request_bad()
         )
         acc_from_db = DepositCrud.get_deposit_by_account_id(db_session, transfer_data.request_data.fromAccountId)
         acc_to_db = DepositCrud.get_deposit_by_account_id(db_session, transfer_data.request_data.toAccountId)

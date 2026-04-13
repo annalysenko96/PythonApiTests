@@ -19,7 +19,6 @@ class TestAccountDeposit:
         prepared_deposit:DepositRequest):
         result = api_manager.account_steps(user_login).create_account_deposit(
             prepared_deposit,
-            ResponseSpecs.request_ok()
         )
 
         deposit_from_db = DepositCrud.get_deposit_by_account_id(db_session,prepared_deposit.account_id)
@@ -34,9 +33,8 @@ class TestAccountDeposit:
         api_manager:ApiManager,
         user_login:dict,
         prepared_deposit:DepositRequest):
-        result = api_manager.account_steps(user_login).create_account_deposit(
+        result = api_manager.account_steps(user_login).create_account_deposit_invalid(
             prepared_deposit,
-            ResponseSpecs.request_bad()
         )
         deposit_from_db = DepositCrud.get_deposit_by_account_id(db_session, prepared_deposit.account_id)
 
