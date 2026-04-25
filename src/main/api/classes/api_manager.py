@@ -1,6 +1,6 @@
 from typing import Any, List
 
-from main.api.steps.credit_repay_steps import CreditRepaySteps
+from src.main.api.steps.credit_repay_steps import CreditRepaySteps
 from src.main.api.steps.admin_steps import AdminSteps
 from src.main.api.steps.account_steps import AccountSteps
 from src.main.api.steps.credit_steps import CreditSteps

@@ -1,7 +1,6 @@
 import pytest
 from sqlalchemy.orm import Session
-from main.api.classes.api_manager import ApiManager
-from src.main.api.specs.response_specs import ResponseSpecs
+from src.main.api.classes.api_manager import ApiManager
 from src.main.api.db.crud.credit_crud import  CreditCrudDb as Credit
 
 
@@ -13,7 +12,6 @@ class TestCreditUser:
             account_id = account_response.id,
             amount=amount,
             term_months = 12,
-            response_spec=ResponseSpecs.request_created()
         )
         credit_from_db = Credit.get_credit_by_id(db_session, result.creditId)
         assert credit_from_db.id == result.creditId
@@ -24,11 +22,10 @@ class TestCreditUser:
     @pytest.mark.parametrize("amount", [-1, 0, 4999.9, 15000.1])
     def test_credit_user_invalid(self,db_session: Session, api_manager: ApiManager, user_credit_login:dict, amount:float):
         account_response = api_manager.account_steps(user_credit_login).create_account()
-        result = api_manager.credit_steps(user_credit_login).credit_data(
+        result = api_manager.credit_steps(user_credit_login).credit_data_indalid(
             account_id=account_response.id,
             amount=amount,
             term_months=12,
-            response_spec=ResponseSpecs.request_bad()
         )
 
         assert account_response.balance ==0

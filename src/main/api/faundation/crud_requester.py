@@ -6,10 +6,15 @@ from src.main.api.faundation.http_requester import HttpRequester
 from src.main.api.models.base_model import BaseModel
 import requests
 
+import allure
+
 
 class CrudRequester(HttpRequester):
     def post(self, model: Optional[BaseModel]) ->  Response:
         body = model.model_dump() if model is not None else ""
+
+        with allure.step(f"POST{Config.fetch("backendUrl")}{self.endpoint.value.url}"):
+            allure.attach(str(body),"Request body",allure.attachment_type.JSON)
 
         response = requests.post(
             url = f"{Config.fetch("backendUrl")}{self.endpoint.value.url}",
@@ -17,6 +22,11 @@ class CrudRequester(HttpRequester):
             json= body
         )
 
+        allure.attach(
+            response.text,
+            "Response body",
+            allure.attachment_type.JSON
+        )
         self.response_spec(response)
         return response
 

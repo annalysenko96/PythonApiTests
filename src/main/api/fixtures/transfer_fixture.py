@@ -1,9 +1,9 @@
 import pytest
 
-from main.api.models.deposit_account_request import DepositAccountRequest
-from main.api.models.transfer_account_request import TransferAccountRequest
-from main.api.models.transfer_request import TransferRequestData
-from main.api.specs.response_specs import ResponseSpecs
+from src.main.api.models.deposit_account_request import DepositAccountRequest
+from src.main.api.models.transfer_account_request import TransferAccountRequest
+from src.main.api.models.transfer_request import TransferRequestData
+from src.main.api.specs.response_specs import ResponseSpecs
 
 
 @pytest.fixture

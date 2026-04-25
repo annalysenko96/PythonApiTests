@@ -1,9 +1,8 @@
 import pytest
 from sqlalchemy.orm import Session
-from main.api.classes.api_manager import ApiManager
-from main.api.db.crud.credit_crud import CreditCrudDb as Credit
-from main.api.specs.response_specs import ResponseSpecs
-from main.api.models.credit_repay_request import CreditRepayRequest
+from src.main.api.classes.api_manager import ApiManager
+from src.main.api.db.crud.credit_crud import CreditCrudDb as Credit
+from src.main.api.models.credit_repay_request import CreditRepayRequest
 
 
 
@@ -17,7 +16,7 @@ class TestCreditRepay:
             active_credit:float,
             repay_request:CreditRepayRequest):
         result = api_manager.credit_repay_steps(user_credit_login).credit_repay(
-            repay_request,ResponseSpecs.request_ok()
+            repay_request,
         )
         credit_from_db = Credit.get_credit_by_id(db_session, repay_request.creditId)
         assert credit_from_db.id == result.creditId
@@ -34,8 +33,8 @@ class TestCreditRepay:
             user_credit_login:dict,
             active_credit:float,
             repay_request:CreditRepayRequest):
-        result = api_manager.credit_repay_steps(user_credit_login).credit_repay(
-            repay_request,ResponseSpecs.request_bad()
+        result = api_manager.credit_repay_steps(user_credit_login).credit_repay_invalid_bad(
+            repay_request,
         )
         credit_from_db = Credit.get_credit_by_id(db_session, repay_request.creditId)
         assert credit_from_db.balance == -15000
@@ -50,8 +49,8 @@ class TestCreditRepay:
             user_credit_login:dict,
             active_credit:float,
             repay_request:CreditRepayRequest):
-        result = api_manager.credit_repay_steps(user_credit_login).credit_repay(
-            repay_request,ResponseSpecs.request_unprocessable_entity()
+        result = api_manager.credit_repay_steps(user_credit_login).credit_repay_invalid_ue(
+            repay_request,
         )
         credit_from_db = Credit.get_credit_by_id(db_session, repay_request.creditId)
         assert credit_from_db.balance == -15000

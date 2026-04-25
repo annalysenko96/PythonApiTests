@@ -1,4 +1,4 @@
-from requests import Response
+
 from src.main.api.faundation.endpoint import Endpoint
 from src.main.api.faundation.validate_crud_requester import ValidateCrudRequester
 from src.main.api.models.create_user_request import CreateUserRequest

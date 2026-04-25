@@ -1,6 +1,6 @@
 import pytest
 
-from main.api.models.deposit_request import DepositRequest
+from src.main.api.models.deposit_request import DepositRequest
 
 
 @pytest.fixture

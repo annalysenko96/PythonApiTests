@@ -15,17 +15,29 @@ class AccountSteps(BaseSteps):
         self.created_obj.append(response)
         return response
 
-    def create_account_deposit(self,deposit_data, response_spec):
+    def create_account_deposit(self,deposit_data, response_spec=ResponseSpecs.request_ok()):
+        response = DepositAccountRequester(
+        request_spec=self.request_spec,
+        response_spec=response_spec
+        ).post(deposit_data)
+        return response
+    def create_account_deposit_invalid(self,deposit_data, response_spec=ResponseSpecs.request_bad()):
         response = DepositAccountRequester(
         request_spec=self.request_spec,
         response_spec=response_spec
         ).post(deposit_data)
         return response
 
-    def transfer_account(self, transfer_data, response_spec):
+    def transfer_account(self, transfer_data, response_spec=ResponseSpecs.request_ok()):
         response = TransferAccountRequester(
             request_spec=self.request_spec,
             response_spec=response_spec
         ).post(transfer_data)
         return response
 
+    def transfer_account_invalid(self, transfer_data, response_spec=ResponseSpecs.request_bad()):
+        response = TransferAccountRequester(
+            request_spec=self.request_spec,
+            response_spec=response_spec
+        ).post(transfer_data)
+        return response
