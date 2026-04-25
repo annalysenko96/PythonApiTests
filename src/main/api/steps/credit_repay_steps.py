@@ -1,7 +1,7 @@
 
-from main.api.requests.credit_repay_requester import CreditRepayRequester
-from main.api.specs.response_specs import ResponseSpecs
-from main.api.steps.base_steps import BaseSteps
+from src.main.api.requests.credit_repay_requester import CreditRepayRequester
+from src.main.api.specs.response_specs import ResponseSpecs
+from src.main.api.steps.base_steps import BaseSteps
 
 
 class CreditRepaySteps(BaseSteps):

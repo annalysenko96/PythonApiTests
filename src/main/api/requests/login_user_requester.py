@@ -7,7 +7,7 @@ from src.main.api.requests.requester import Requester
 
 
 class LoginUserRequester(Requester):
-    def post(self,login_user_request:LoginUserRequest) -> LoginUserRequest | Response:
+    def post(self,login_user_request:LoginUserRequest) -> LoginUserResponse | Response:
         url =f"{self.base_url}/auth/token/login"
         response = requests.post(
             url=url,

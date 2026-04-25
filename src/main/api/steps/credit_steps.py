@@ -1,6 +1,5 @@
 from src.main.api.models.credit_get_request import CreditGetRequest
 from src.main.api.requests.credit_user_requester import CreditUserRequester
-from src.main.api.specs.request_specs import RequestSpecs
 from src.main.api.specs.response_specs import ResponseSpecs
 from src.main.api.steps.base_steps import BaseSteps
 

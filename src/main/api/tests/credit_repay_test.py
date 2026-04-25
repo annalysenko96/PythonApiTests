@@ -1,9 +1,8 @@
 import pytest
 from sqlalchemy.orm import Session
-from main.api.classes.api_manager import ApiManager
-from main.api.db.crud.credit_crud import CreditCrudDb as Credit
-from main.api.specs.response_specs import ResponseSpecs
-from main.api.models.credit_repay_request import CreditRepayRequest
+from src.main.api.classes.api_manager import ApiManager
+from src.main.api.db.crud.credit_crud import CreditCrudDb as Credit
+from src.main.api.models.credit_repay_request import CreditRepayRequest
 
 
 

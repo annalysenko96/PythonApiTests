@@ -1,7 +1,7 @@
 from requests import Response
 from http import HTTPStatus
 
-from sqlalchemy.testing.util import conforms_partial_ordering
+
 
 
 class ResponseSpecs:

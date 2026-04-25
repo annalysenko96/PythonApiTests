@@ -1,7 +1,9 @@
+from src.main.api.configs.config import Config
 from src.main.api.faundation.crud_requester import CrudRequester
 from src.main.api.faundation.http_requester import HttpRequester
 from src.main.api.models.base_model import BaseModel
 from typing import Optional
+import allure
 
 
 class ValidateCrudRequester(HttpRequester):
@@ -14,6 +16,9 @@ class ValidateCrudRequester(HttpRequester):
         )
     def post(self, model:Optional[BaseModel] = None) -> Optional[BaseModel]:
         response = self.crud_requester.post(model)
+        with allure.step(f"POST{Config.fetch("backendUrl")}{self.endpoint.value.url} and Validated Model"):
+            allure.attach(f"Validated Model response: {self.endpoint.value.response_model.__name__}")
+
         self.response_spec = response
         return self.endpoint.value.response_model.model_validate(response.json())
 
@@ -21,3 +26,4 @@ class ValidateCrudRequester(HttpRequester):
         response = self.crud_requester.delete(user_id)
         self.response_spec = response
         return self.endpoint.value.response_model.model_validate(response.json())
+

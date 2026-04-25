@@ -1,7 +1,7 @@
 from typing import Optional,Type
 
-from main.api.models.credit_repay_request import CreditRepayRequest
-from main.api.models.credit_repay_response import CreditRepayResponse
+from src.main.api.models.credit_repay_request import CreditRepayRequest
+from src.main.api.models.credit_repay_response import CreditRepayResponse
 from src.main.api.models.base_model import BaseModel
 from dataclasses import dataclass
 from enum import Enum

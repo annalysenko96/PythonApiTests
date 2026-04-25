@@ -1,11 +1,10 @@
 import pytest
 from sqlalchemy.orm import Session
 
-from main.api.models.deposit_request import DepositRequest
+
 from src.main.api.classes.api_manager import ApiManager
 from src.main.api.models.deposit_request import DepositRequest
-from src.main.api.specs.response_specs import ResponseSpecs
-from main.api.db.crud.deposit_crud import DepositCrud
+from src.main.api.db.crud.deposit_crud import DepositCrud
 
 
 

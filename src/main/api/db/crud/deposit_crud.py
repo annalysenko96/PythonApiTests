@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from main.api.db.models.account_table import Account
+from src.main.api.db.models.account_table import Account
 
 
 class DepositCrud:

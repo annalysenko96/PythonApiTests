@@ -1,6 +1,6 @@
 import pytest
 
-from main.api.models.credit_repay_request import CreditRepayRequest
+from src.main.api.models.credit_repay_request import CreditRepayRequest
 
 
 @pytest.fixture

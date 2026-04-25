@@ -1,14 +1,12 @@
 import pytest
 from sqlalchemy.orm import Session
 
-from main.api.classes.api_manager import ApiManager
-from main.api.db.crud.deposit_crud import DepositCrud
-from main.api.fixtures.u_login_fixture import user_login
-from main.api.models.transfer_request import TransferRequestData
-from src.main.api.specs.response_specs import ResponseSpecs
+from src.main.api.classes.api_manager import ApiManager
+from src.main.api.db.crud.deposit_crud import DepositCrud
+from src.main.api.fixtures.u_login_fixture import user_login
+from src.main.api.models.transfer_request import TransferRequestData
 from src.main.api.db.crud.transaction_crud import TransactionCrudDb as Transaction
 
-@pytest.mark.api
 class TestTransfer:
     @pytest.mark.parametrize("transfer_data", [500, 500.1, 9999.9, 10000],indirect=True)
     def test_transfer_account_valid(self,

@@ -1,5 +1,5 @@
-from main.api.models.base_model import BaseModel
-from main.api.models.transfer_account_request import TransferAccountRequest
+from src.main.api.models.base_model import BaseModel
+from src.main.api.models.transfer_account_request import TransferAccountRequest
 
 
 class TransferRequestData(BaseModel):

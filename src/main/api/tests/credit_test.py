@@ -1,7 +1,6 @@
 import pytest
 from sqlalchemy.orm import Session
-from main.api.classes.api_manager import ApiManager
-from src.main.api.specs.response_specs import ResponseSpecs
+from src.main.api.classes.api_manager import ApiManager
 from src.main.api.db.crud.credit_crud import  CreditCrudDb as Credit
 
 
